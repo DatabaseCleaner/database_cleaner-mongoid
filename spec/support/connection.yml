@@ -1,7 +1,14 @@
 test:
+  # mongoid >= v5
   clients:
     default:
       database: mongoid
       hosts:
         - localhost:27017
 
+  # mongoid <= v4
+  sessions:
+    default:
+      database: mongoid
+      hosts:
+        - localhost:27017
