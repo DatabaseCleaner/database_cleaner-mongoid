@@ -39,6 +39,10 @@ module DatabaseCleaner
 
       private
 
+      def session
+        ::Mongoid.default_session
+      end
+
       def collections
         if db != :default
           session.use(db)

@@ -11,27 +11,9 @@ module DatabaseCleaner
       include ::DatabaseCleaner::Generic::Truncation
 
       if ::Mongoid::VERSION < '5'
-
         include ::DatabaseCleaner::Mongoid::Mongoid4TruncationMixin
-
-        private
-
-        def session
-          ::Mongoid::VERSION > "5.0.0" ? ::Mongoid.default_client : ::Mongoid.default_session
-        end
-
-        def database
-          if not(@db.nil? or @db == :default)
-            ::Mongoid.databases[@db]
-          else
-            ::Mongoid.database
-          end
-        end
-
       else
-
         include ::DatabaseCleaner::Mongoid::Mongoid5TruncationMixin
-
       end
     end
   end
