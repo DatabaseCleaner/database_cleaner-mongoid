@@ -1,12 +1,6 @@
-require 'database_cleaner/generic/base'
-require 'database_cleaner/generic/truncation'
-
 module DatabaseCleaner
   module Mongoid
     module Mongoid4TruncationMixin
-      include ::DatabaseCleaner::Generic::Base
-      include ::DatabaseCleaner::Generic::Truncation
-
       def db=(desired_db)
         @db = desired_db
       end
