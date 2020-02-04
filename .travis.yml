@@ -6,6 +6,12 @@ rvm:
   - 2.5
   - 2.6
   - 2.7
+gemfile:
+  - gemfiles/mongoid3.gemfile
+  - gemfiles/mongoid4.gemfile
+  - gemfiles/mongoid5.gemfile
+  - gemfiles/mongoid6.gemfile
+  - gemfiles/mongoid7.gemfile
 before_install:
   - gem install bundler -v 1.17.3
 before_script:
