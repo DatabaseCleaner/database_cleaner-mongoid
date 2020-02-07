@@ -6,7 +6,7 @@ require "database_cleaner/mongoid/version"
 Gem::Specification.new do |spec|
   spec.name          = "database_cleaner-mongoid"
   spec.version       = DatabaseCleaner::Mongoid::VERSION
-  spec.authors       = ["Ernesto Tagwerker"]
+  spec.authors       = ["Ernesto Tagwerker", "Micah Geisel"]
   spec.email         = ["ernesto@ombulabs.com"]
 
   spec.summary       = "Strategies for cleaning databases using Mongoid. Can be used to ensure a clean state for testing."
