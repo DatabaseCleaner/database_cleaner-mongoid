@@ -6,7 +6,7 @@ require "database_cleaner/mongoid/version"
 Gem::Specification.new do |spec|
   spec.name          = "database_cleaner-mongoid"
   spec.version       = DatabaseCleaner::Mongoid::VERSION
-  spec.authors       = ["Ernesto Tagwerker"]
+  spec.authors       = ["Ernesto Tagwerker", "Micah Geisel"]
   spec.email         = ["ernesto@ombulabs.com"]
 
   spec.summary       = "Strategies for cleaning databases using Mongoid. Can be used to ensure a clean state for testing."
@@ -21,10 +21,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "database_cleaner", "~> 1.8.0"
+  spec.add_dependency "database_cleaner-core", "2.0.0.beta"
   spec.add_dependency "mongoid"
 
-  spec.add_development_dependency "bundler", "~> 1.16"
-  spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "rspec", "~> 3.0"
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "appraisal"
+  spec.add_development_dependency "rake"
+  spec.add_development_dependency "rspec"
 end

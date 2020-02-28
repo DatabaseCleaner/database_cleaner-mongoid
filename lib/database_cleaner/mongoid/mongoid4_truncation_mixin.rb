@@ -1,12 +1,6 @@
-require 'database_cleaner/generic/base'
-require 'database_cleaner/generic/truncation'
-
 module DatabaseCleaner
   module Mongoid
-    module MongoidTruncationMixin
-      include ::DatabaseCleaner::Generic::Base
-      include ::DatabaseCleaner::Generic::Truncation
-
+    module Mongoid4TruncationMixin
       def db=(desired_db)
         @db = desired_db
       end
@@ -38,6 +32,10 @@ module DatabaseCleaner
       end
 
       private
+
+      def session
+        ::Mongoid.default_session
+      end
 
       def collections
         if db != :default
