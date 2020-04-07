@@ -2,8 +2,13 @@
 
 source "https://rubygems.org"
 
+gem "database_cleaner-core", git: "https://github.com/DatabaseCleaner/database_cleaner"
 gem "byebug"
-gem "database_cleaner-core", branch: "master", git: "https://github.com/DatabaseCleaner/database_cleaner"
 gem "mongoid", "~>4.0"
+
+group :test do
+  gem "simplecov", require: false
+  gem "codecov", require: false
+end
 
 gemspec path: "../"

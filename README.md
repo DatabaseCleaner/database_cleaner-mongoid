@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/DatabaseCleaner/database_cleaner-mongoid.svg?branch=master)](https://travis-ci.org/DatabaseCleaner/database_cleaner-mongoid)
 [![Code Climate](https://codeclimate.com/github/DatabaseCleaner/database_cleaner-mongoid/badges/gpa.svg)](https://codeclimate.com/github/DatabaseCleaner/database_cleaner-mongoid)
+[![codecov](https://codecov.io/gh/DatabaseCleaner/database_cleaner-mongoid/branch/master/graph/badge.svg)](https://codecov.io/gh/DatabaseCleaner/database_cleaner-mongoid)
 
 Clean your Mongoid databases with Database Cleaner.
 
