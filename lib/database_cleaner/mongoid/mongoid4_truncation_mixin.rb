@@ -1,10 +1,6 @@
 module DatabaseCleaner
   module Mongoid
     module Mongoid4TruncationMixin
-      def db_version
-        @db_version ||= session.command('buildinfo' => 1)['version']
-      end
-
       def clean
         if @only.any?
           collections.each { |c| session[c].find.remove_all if @only.include?(c) }
@@ -19,6 +15,10 @@ module DatabaseCleaner
 
       def session
         ::Mongoid.default_session
+      end
+
+      def db_version
+        @db_version ||= session.command('buildinfo' => 1)['version']
       end
 
       def collections
