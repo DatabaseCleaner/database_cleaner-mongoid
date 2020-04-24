@@ -1,14 +1,6 @@
 module DatabaseCleaner
   module Mongoid
     module Mongoid4TruncationMixin
-      def db=(desired_db)
-        @db = desired_db
-      end
-
-      def db
-        @db ||= :default
-      end
-
       def host_port=(desired_host)
         @host = desired_host
       end
