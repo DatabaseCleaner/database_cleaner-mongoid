@@ -1,5 +1,4 @@
 require "bundler/setup"
-require "database_cleaner-mongoid"
 require "byebug"
 
 if ENV['COVERAGE'] == 'true'
@@ -14,6 +13,8 @@ if ENV['COVERAGE'] == 'true'
   SimpleCov.start
   puts "required simplecov"
 end
+
+require "database_cleaner-mongoid"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
