@@ -7,7 +7,6 @@ module DatabaseCleaner
         else
           collections.each { |c| database[c].find.delete_many unless @except.include?(c) }
         end
-        true
       end
 
       private
