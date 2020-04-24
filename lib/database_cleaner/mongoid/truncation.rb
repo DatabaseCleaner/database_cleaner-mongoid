@@ -1,14 +1,15 @@
-require 'database_cleaner/mongoid/base'
-require 'database_cleaner/generic/truncation'
+require 'database_cleaner/strategy'
 require 'database_cleaner/mongoid/mongoid4_truncation_mixin'
 require 'database_cleaner/mongoid/mongoid5_truncation_mixin'
 require 'mongoid/version'
 
 module DatabaseCleaner
   module Mongoid
-    class Truncation
-      include ::DatabaseCleaner::Mongoid::Base
-      include ::DatabaseCleaner::Generic::Truncation
+    class Truncation < Strategy
+      def initialize only: [], except: []
+        @only = only
+        @except = except
+      end
 
       if ::Mongoid::VERSION < '5'
         include ::DatabaseCleaner::Mongoid::Mongoid4TruncationMixin
