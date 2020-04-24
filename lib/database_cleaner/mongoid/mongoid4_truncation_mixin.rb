@@ -1,14 +1,6 @@
 module DatabaseCleaner
   module Mongoid
     module Mongoid4TruncationMixin
-      def host_port=(desired_host)
-        @host = desired_host
-      end
-
-      def host
-        @host ||= '127.0.0.1:27017'
-      end
-
       def db_version
         @db_version ||= session.command('buildinfo' => 1)['version']
       end
