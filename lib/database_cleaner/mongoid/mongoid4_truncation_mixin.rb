@@ -8,7 +8,6 @@ module DatabaseCleaner
           collections.each { |c| session[c].find.remove_all unless @except.include?(c) }
         end
         wait_for_removals_to_finish
-        true
       end
 
       private
