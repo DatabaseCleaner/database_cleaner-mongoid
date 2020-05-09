@@ -16,10 +16,6 @@ module DatabaseCleaner
         ::Mongoid.default_session
       end
 
-      def db_version
-        @db_version ||= session.command('buildinfo' => 1)['version']
-      end
-
       def collections
         if db != :default
           session.use(db)
