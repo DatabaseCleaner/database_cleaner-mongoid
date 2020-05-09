@@ -37,5 +37,32 @@ RSpec.describe DatabaseCleaner::Mongoid::Truncation do
       end
     end
   end
+
+  describe "#db=" do
+    def with_other_database name
+      Mongoid.override_database name
+      ret = yield
+      Mongoid.override_database :default
+      ret
+    end
+
+    it "can accept a name to clean another database" do
+      with_other_database :second do
+        2.times { User.create! }
+        2.times { Agent.create! }
+      end
+
+      strategy.db = :second
+
+      expect { strategy.clean }
+        .to change {
+          with_other_database :second do
+            [User.count, Agent.count]
+          end
+        }
+        .from([2,2])
+        .to([0,0])
+    end
+  end
 end
 
