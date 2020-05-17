@@ -1,6 +1,6 @@
 module DatabaseCleaner
   module Mongoid
-    module Mongoid4TruncationMixin
+    module Mongoid4Mixin
       def clean
         collections_to_delete.each(&:remove_all)
         wait_for_removals_to_finish
