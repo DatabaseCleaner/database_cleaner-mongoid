@@ -19,39 +19,36 @@ end
 
 ## Supported Strategies
 
-<table>
-  <tbody>
-    <tr>
-      <th>Truncation</th>
-      <th>Transaction</th>
-      <th>Deletion</th>
-    </tr>
-    <tr>
-      <td> <b>Yes</b></td>
-      <td> No</td>
-      <td> No</td>
-    </tr>
-  </tbody>
-</table>
+The mongoid adapter only has one strategy: the deletion strategy.
 
-(Default strategy is denoted in bold)
+## Strategy configuration options
 
-## Configuration options
+`:only` and `:except` may take a list of collection names:
 
-<table>
-  <tbody>
-    <tr>
-      <th>ORM</th>
-      <th>How to access</th>
-      <th>Notes</th>
-    </tr>
-    <tr>
-      <td> Mongoid</td>
-      <td> <code>DatabaseCleaner[:mongoid]</code></td>
-      <td> Multiple databases supported for Mongoid 3. Specify <code>DatabaseCleaner[:mongoid, {:connection =&gt; :db_name}]</code> </td>
-    </tr>
-  </tbody>
-</table>
+```ruby
+# Only delete the "users" collection.
+DatabaseCleaner[:mongoid].strategy = :deletion, { only: ["users"] }
+
+# Delete all collections except the "users" collection.
+DatabaseCleaner[:mongoid].strategy = :deletion, { except: ["users"] }
+```
+
+## Adapter configuration options
+
+`#db` defaults to the default Mongoid database, but can be specified manually in a few ways:
+
+```ruby
+# Redis URI string:
+DatabaseCleaner[:mongoid].db = :logs
+
+# Back to default:
+DatabaseCleaner[:mongoid].db = :default
+
+# Multiple Mongoid databases can be specified:
+DatabaseCleaner[:mongoid, connection: :default]
+DatabaseCleaner[:mongoid, connection: :shard_1]
+DatabaseCleaner[:mongoid, connection: :shard_2]
+```
 
 ## COPYRIGHT
 

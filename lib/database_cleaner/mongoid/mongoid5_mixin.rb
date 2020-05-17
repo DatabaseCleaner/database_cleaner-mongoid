@@ -1,6 +1,6 @@
 module DatabaseCleaner
   module Mongoid
-    module Mongoid5TruncationMixin
+    module Mongoid5Mixin
       def clean
         collections_to_delete.each(&:delete_many)
       end

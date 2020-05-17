@@ -1,7 +1,7 @@
 require 'support/mongoid_helper'
-require 'database_cleaner/mongoid/truncation'
+require 'database_cleaner/mongoid/deletion'
 
-RSpec.describe DatabaseCleaner::Mongoid::Truncation do
+RSpec.describe DatabaseCleaner::Mongoid::Deletion do
   subject(:strategy) { described_class.new }
 
   describe '#clean' do
@@ -11,21 +11,21 @@ RSpec.describe DatabaseCleaner::Mongoid::Truncation do
         2.times { Agent.create! }
       end
 
-      it "should truncate all tables" do
+      it "should delete all collections" do
         expect { strategy.clean }
           .to change { [User.count, Agent.count] }
           .from([2,2])
           .to([0,0])
       end
 
-      it "should only truncate the tables specified in the :only option when provided" do
+      it "should only delete the collections specified in the :only option when provided" do
         expect { described_class.new(only: ['agents']).clean }
           .to change { [User.count, Agent.count] }
           .from([2,2])
           .to([2,0])
       end
 
-      it "should not truncate the tables specified in the :except option" do
+      it "should not delete the collections specified in the :except option" do
         expect { described_class.new(except: ['users']).clean }
           .to change { [User.count, Agent.count] }
           .from([2,2])
