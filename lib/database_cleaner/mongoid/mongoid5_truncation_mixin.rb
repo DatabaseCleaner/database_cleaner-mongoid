@@ -2,11 +2,7 @@ module DatabaseCleaner
   module Mongoid
     module Mongoid5TruncationMixin
       def clean
-        if @only.any?
-          collections.each { |c| database[c].find.delete_many if @only.include?(c) }
-        else
-          collections.each { |c| database[c].find.delete_many unless @except.include?(c) }
-        end
+        collections_to_delete.each(&:delete_many)
       end
 
       private

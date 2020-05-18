@@ -6,15 +6,24 @@ require 'mongoid/version'
 module DatabaseCleaner
   module Mongoid
     class Truncation < Strategy
+      if ::Mongoid::VERSION < '5'
+        include ::DatabaseCleaner::Mongoid::Mongoid4TruncationMixin
+      else
+        include ::DatabaseCleaner::Mongoid::Mongoid5TruncationMixin
+      end
+
       def initialize only: [], except: []
         @only = only
         @except = except
       end
 
-      if ::Mongoid::VERSION < '5'
-        include ::DatabaseCleaner::Mongoid::Mongoid4TruncationMixin
-      else
-        include ::DatabaseCleaner::Mongoid::Mongoid5TruncationMixin
+      private
+
+      def collections_to_delete
+        only = @only.any? ? @only : collections
+        (only - @except).map do |name|
+          database[name].find
+        end
       end
     end
   end
