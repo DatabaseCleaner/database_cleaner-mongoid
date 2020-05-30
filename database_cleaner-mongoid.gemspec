@@ -1,7 +1,4 @@
-
-lib = File.expand_path("../lib", __FILE__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "database_cleaner/mongoid/version"
+require_relative "./lib/database_cleaner/mongoid/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "database_cleaner-mongoid"
@@ -21,7 +18,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "database_cleaner-core", "2.0.0.beta"
+  spec.add_dependency "database_cleaner-core", "~>2.0.0.beta2"
   spec.add_dependency "mongoid"
 
   spec.add_development_dependency "bundler"
