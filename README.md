@@ -45,9 +45,9 @@ DatabaseCleaner[:mongoid].db = :logs
 DatabaseCleaner[:mongoid].db = :default
 
 # Multiple Mongoid databases can be specified:
-DatabaseCleaner[:mongoid, connection: :default]
-DatabaseCleaner[:mongoid, connection: :shard_1]
-DatabaseCleaner[:mongoid, connection: :shard_2]
+DatabaseCleaner[:mongoid, db: :default]
+DatabaseCleaner[:mongoid, db: :shard_1]
+DatabaseCleaner[:mongoid, db: :shard_2]
 ```
 
 ## COPYRIGHT
