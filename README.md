@@ -27,10 +27,10 @@ The mongoid adapter only has one strategy: the deletion strategy.
 
 ```ruby
 # Only delete the "users" collection.
-DatabaseCleaner[:mongoid].strategy = :deletion, { only: ["users"] }
+DatabaseCleaner[:mongoid].strategy = :deletion, only: ["users"]
 
 # Delete all collections except the "users" collection.
-DatabaseCleaner[:mongoid].strategy = :deletion, { except: ["users"] }
+DatabaseCleaner[:mongoid].strategy = :deletion, except: ["users"]
 ```
 
 ## Adapter configuration options
