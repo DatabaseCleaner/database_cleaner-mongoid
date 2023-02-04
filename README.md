@@ -17,7 +17,7 @@ group :test do
 end
 ```
 
-## Rspec connection example
+## RSpec connection example
 ```ruby
 # spec_helper.rb
 require "database_cleaner-mongoid"
