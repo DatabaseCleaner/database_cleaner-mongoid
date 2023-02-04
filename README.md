@@ -17,6 +17,18 @@ group :test do
 end
 ```
 
+## RSpec connection example
+```ruby
+# spec_helper.rb
+require "database_cleaner-mongoid"
+DatabaseCleaner[:mongoid].db = :default
+  # Clear DB
+  config.before(:suite) do
+    DatabaseCleaner[:mongoid].strategy = :deletion
+  end
+  
+config.before(:each) { DatabaseCleaner[:mongoid].clean }
+```
 ## Supported Strategies
 
 The mongoid adapter only has one strategy: the deletion strategy.
